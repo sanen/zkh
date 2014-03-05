@@ -17,7 +17,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/standard.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/struts2-core-2.1.8.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/xwork-core-2.1.6.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-net/commons-httpclient-3.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/zhangkeh/.m2/repository/commons-net/commons-net/3.0.1/commons-net-3.0.1.jar">
 		<attributes>
 			<attribute name="maven.groupId" value="commons-net"/>
