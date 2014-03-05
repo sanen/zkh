@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Enumeration;
 import java.util.Properties;
 
 /**
@@ -24,9 +25,10 @@ public class PropertiesOpertion {
 
         PropertiesOpertion propertiesOpertion = new PropertiesOpertion();
 
-        propertiesOpertion.createProperties();
+        //propertiesOpertion.createProperties();
 
-        propertiesOpertion.getProperties();
+        //propertiesOpertion.getProperties();
+        propertiesOpertion.loadClassPathProperties();
 
     }
 
@@ -79,9 +81,9 @@ public class PropertiesOpertion {
             prop.load(input);
 
             // get the property value and print it out
-            System.out.println("database value is: "+prop.getProperty("database"));
-            System.out.println("dbuser value is: "+prop.getProperty("dbuser"));
-            System.out.println("dbpassword value is: "+prop.getProperty("dbpassword"));
+            System.out.println("database value is: " + prop.getProperty("database"));
+            System.out.println("dbuser value is: " + prop.getProperty("dbuser"));
+            System.out.println("dbpassword value is: " + prop.getProperty("dbpassword"));
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -93,6 +95,57 @@ public class PropertiesOpertion {
                     e.printStackTrace();
                 }
             }
+        }
+
+    }
+
+    /**
+     * Load a properties file from classpath
+     */
+    public void loadClassPathProperties() {
+        Properties prop = new Properties();
+        InputStream input = null;
+
+        try {
+
+            String filename = "config.properties";
+            input = PropertiesOpertion.class.getClassLoader().getResourceAsStream(filename);
+            if (input == null) {
+                System.out.println("Sorry, unable to find " + filename);
+                return;
+            }
+
+            // load a properties file from class path, inside static method
+            prop.load(input);
+
+            // get the property value and print it out
+            System.out.println(prop.getProperty("database"));
+            System.out.println(prop.getProperty("dbuser"));
+            System.out.println(prop.getProperty("dbpassword"));
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+    }
+    
+    /**
+     * print properties all properties and values
+     * @param prop
+     */
+    @SuppressWarnings("rawtypes")
+    public void loopProperties(Properties prop) {
+        for (Enumeration e = prop.propertyNames(); e.hasMoreElements();) {
+            String s = (String)e.nextElement();
+            System.out.println(s + " : " + prop.getProperty(s));
         }
 
     }
