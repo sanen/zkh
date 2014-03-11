@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" output="target/classes" path="src/main/java"/>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/commons-fileupload-1.2.1.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/commons-io-1.3.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/freemarker-2.3.15.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/jstl.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/ognl-2.7.3.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/servlet-api-2.5.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/standard.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/struts2-core-2.1.8.1.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2/xwork-core-2.1.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/zhangkeh/.m2/repository/commons-net/commons-net/3.0.1/commons-net-3.0.1.jar">
-		<attributes>
-			<attribute name="maven.groupId" value="commons-net"/>
-			<attribute name="maven.artifactId" value="commons-net"/>
-			<attribute name="maven.version" value="3.0.1"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-net/commons-net-3.0.1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path="build/classes"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>
