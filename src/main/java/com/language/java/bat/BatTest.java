@@ -11,7 +11,7 @@ public class BatTest {
      */
     public static void main(String[] args) throws IllegalAccessException {
         checkServerWhetherLive("127.0.0.1", 2181);
-
+        checkServerWhetherLive("127.0.0.1", 2183);
     }
 
     /**
@@ -34,7 +34,7 @@ public class BatTest {
 
         } finally {
         }
-        System.out.println(" connect status : " + isConnect);
+        System.out.println("Host "+host+" port is "+port+", this port connect status is " + isConnect);
 
     }
 
