@@ -1,0 +1,74 @@
+connect sys/abc as sysdba--以超级管理员的身份登陆
+
+connect sys/abc@qhit as sysdba--以超级管理员的身份登陆到指定的数据库qhit
+
+show user--当前命令行下的用户
+
+alter user scott account unlock--给scott用户解锁
+
+alter user scott account lock--给scott用户加锁
+
+select table_name from user_tables --查询当前用户下有多少张表
+
+desc emp--描述emp表的表结构
+
+
+select COUNT(*) from All_ObjectS where object_type='TABLE' AND OWNER='SYS'; ---查询库中有多少张表
+select COUNT(*) from All_ObjectS where object_type='TABLE';
+select COUNT(*) from All_ObjectS
+
+-----------------------------------------------------------------
+
+connect sys/abc as sysdba ;
+
+create user username identified by password --创建一个用户
+
+create role myrole identified by myrole--创建一个角色myrole
+
+grant connect to username--给username授连接数据库的权限
+
+grant select any table to myrole--授予myrole角色查询所有表的权限
+
+grant select any table to username with admin option--授予username用户查询所有表的权限，并且可以给其他用户授予此权限
+
+grant resource to username--给username授资源权限
+
+grant create view to username--给username授创建视图权限
+
+create view viewname as select ename from emp--创建一个视图
+
+select view_name from user_views--查看当前用户下，有多少个视图
+
+connect sys/abc as sysdba
+
+grant select on scott.emp to litao--把scott用户表的select权限给litao
+
+revoke select on scott.emp from litao--撤消select权限
+
+grant select,update,delete,insert on scott.emp to litao ;
+
+revoke select,update,delete,insert on scott.emp from litao ;
+
+select username,password from dba_users--查询系统中有多少个用户
+
+----------------------------------------------------------------
+
+clear screen--清屏
+
+set linesize 200--设定每行显示的条数
+
+set pagesize 2--设定每页显示的条数
+
+----------------------------------------------------------------
+
+exp --导出数据库
+
+imp --导入数据库
+
+
+
+
+
+
+
+

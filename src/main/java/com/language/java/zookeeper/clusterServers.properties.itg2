@@ -1,0 +1,13 @@
+# record zookeeper cluster servers configuration path
+
+host.1=c0041803.itcs.hp.com
+port.1=2181
+server.1=C:/zkh/Project/POC/zookeeper-cluster/zk-server-1
+
+host.2=c0041803.itcs.hp.com
+port.2=2182
+server.2=C:/zkh/Project/POC/zookeeper-cluster/zk-server-2
+
+host.3=c0041803.itcs.hp.com
+port.3=2183
+server.3=C:/zkh/Project/POC/zookeeper-cluster/zk-server-3
