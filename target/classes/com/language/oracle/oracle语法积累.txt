@@ -14,6 +14,8 @@ desc emp--描述emp表的表结构
 
 
 select COUNT(*) from All_ObjectS where object_type='TABLE' AND OWNER='SYS'; ---查询库中有多少张表
+select COUNT(*) from All_ObjectS where object_type='TABLE';
+select COUNT(*) from All_ObjectS
 
 -----------------------------------------------------------------
 
