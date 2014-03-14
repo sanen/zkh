@@ -9,8 +9,10 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.zip.ZipOutputStream;
 
 public class FileUtil {
 
@@ -86,6 +88,7 @@ public class FileUtil {
             Writer w = new BufferedWriter(osw);
             w.write("POTATO!!!");
             w.close();
+            
         } catch (IOException e) {
             System.err.println("Problem writing to the file statsTest.txt");
         }
@@ -145,6 +148,8 @@ public class FileUtil {
 
         // writeContentToFile();
 
-        writeContent();
+        // writeContent();
+
+        writeFileContent();
     }
 }

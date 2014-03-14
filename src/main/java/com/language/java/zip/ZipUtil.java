@@ -126,6 +126,65 @@ public class ZipUtil {
         }
     }
 
+    private static String root;
+
+    public static void zipFile(File file) {
+
+        if (file.exists()) {
+            try {
+                root = file.getName();
+                ZipOutputStream out = null;
+                try {
+                    out = new ZipOutputStream(new FileOutputStream(new File("C:\\temp\\" + file.getName() + ".zip")));
+                    zipFile(file, out);
+                    System.out.println("zip this folder " + file.getName() + " is successful");
+                } catch (Exception e) {
+                    System.out.println("throw the exception, exception message is " + e.getMessage());
+                } finally {
+                    if (out != null) {
+                        try {
+                            out.finish();
+                        } catch (IOException e) {
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("file not exists !!! ");
+        }
+
+    }
+
+    public static void zipFile(File file, ZipOutputStream out) throws Exception {
+        String path = file.getPath();
+        int index = path.lastIndexOf(root) + root.length();
+        if (file.isDirectory()) {
+            File[] subFile = file.listFiles();
+            for (File f : subFile) {
+                zipFile(f, out);
+            }
+        } else {
+            zipFile(file, path.substring(index + 1), out);
+        }
+    }
+
+    public static void zipFile(File file, String zipPath, ZipOutputStream out) throws Exception {
+        if (file.isDirectory()) {
+            out.putNextEntry(new ZipEntry(zipPath + "/" + file.getName() + "/"));
+        } else {
+            out.putNextEntry(new ZipEntry(zipPath));
+            FileInputStream in = new FileInputStream(file);
+            byte[] b = new byte[1000];
+            int len = -1;
+            while ((len = in.read(b)) != -1) {
+                out.write(b, 0, len);
+            }
+            in.close();
+        }
+    }
+
     /**
      * 将zip文件解压到指定的目录，该zip文件必须是使用该类的zip方法压缩的文件
      * 
@@ -222,17 +281,17 @@ public class ZipUtil {
         return result;
     }
 
-    private static String sourcepath = "C:\\temp";
-    private static List<String> folderList = new ArrayList<String>(Arrays.asList(sourcepath));
-    private static List<String> folderList2 = new ArrayList<String>(Arrays.asList("D:\\tmp"
-                                                                                  + File.separator
-                                                                                  + sourcepath.substring(sourcepath.lastIndexOf(File.separator))));
     private static FileInputStream fis = null;
     private static FileOutputStream fos = null;
     private static ZipOutputStream zipOut = null;
+    private static String sourcepath = "C:\\Oracle\\Middleware\\user_projects\\domains\\HPSC_Producer_Sandbox\\globalResources\\portlet\\config\\deviceconfig";
+    private static List<String> folderList = new ArrayList<String>(Arrays.asList(sourcepath));
+    private static List<String> folderList2 = new ArrayList<String>(Arrays.asList("c:\\temp"
+                                                                                  + File.separator
+                                                                                  + sourcepath.substring(sourcepath.lastIndexOf(File.separator))));
 
     /**
-     * Java实现Zip压缩目录中的所有文件
+     * Java实现Zip压缩目录中的所有文件自身压缩
      * 
      * @param args
      * @throws IOException
@@ -243,10 +302,11 @@ public class ZipUtil {
             String[] file = new File(folderList.get(j)).list();
             File temp = null;
             for (int i = 0; i < file.length; i++) {
-                if (folderList.get(j).endsWith(File.separator))
+                if (folderList.get(j).endsWith(File.separator)) {
                     temp = new File(folderList.get(j), file[i]);
-                else
+                } else {
                     temp = new File(folderList.get(j), file[i]);
+                }
                 File zipFile = new File(folderList2.get(j), temp.getName() + ".zip");
                 if (temp.isFile() && !zipFile.exists())
                     try {
@@ -255,13 +315,10 @@ public class ZipUtil {
                         zipOut = new ZipOutputStream(fos);
                         ZipEntry entry = new ZipEntry(temp.getName());
                         zipOut.putNextEntry(entry);
-                        
                         int nNumber;
                         byte[] buffer = new byte[20480];
-                        while ((nNumber = fis.read(buffer)) != -1){
+                        while ((nNumber = fis.read(buffer)) != -1)
                             zipOut.write(buffer, 0, nNumber);
-                        }
-                        
                         zipOut.flush();
                     } catch (IOException e) {
                         continue;
@@ -282,10 +339,16 @@ public class ZipUtil {
     }
 
     public static void main(String[] args) throws IOException {
-        // String path="D:\\local_dev_view\\Dev_TopWebSites_V2.0\\Cobweb\\WebSites\\frontsites\\docroot\\anhuigs";
-        // ZipUtil.zip(path, "d:/temp");
-        String zipfile = "C:\\zkh\\Tool\\Book\\Maven.zip";
-        File zipFile = new File(zipfile);
-        ZipUtil.unzip(zipFile, "C:\\zkh\\Tool\\Book");
+
+        // 1. zip file by using speicfic zip package name for sepcific directory files
+
+        // 2. upzip zip file to speicfic directory
+        // String zipfile = "C:\\zkh\\Tool\\Book\\Maven.zip";
+        // ZipUtil.unzip(new File(zipfile), "C:\\zkh\\Tool\\Book");
+
+        // zipFile(new File("C:\\Users\\zhangkeh\\Downloads"));
+
+        zipFolderFiles();
+
     }
 }
