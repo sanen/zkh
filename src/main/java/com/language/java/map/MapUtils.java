@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-public class Testing {
+public class MapUtils {
     public static void main(String[] args) {
 
         // System.out.println("\n***************** sort map that value is double *****************");
