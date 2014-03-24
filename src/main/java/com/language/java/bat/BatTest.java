@@ -15,6 +15,7 @@ public class BatTest {
      */
     public static void main(String[] args) throws IllegalAccessException {
         checkServerWhetherLive("127.0.0.1", 2181);
+        //checkServerWhetherLive("127.0.0.1", 2182);
         checkServerWhetherLive("127.0.0.1", 2183);
         checkServerWhetherLive("127.0.0.1", 2185);
         checkServerWhetherLive("127.0.0.1", 2186);
