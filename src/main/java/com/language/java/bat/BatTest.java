@@ -19,7 +19,8 @@ public class BatTest {
         checkServerWhetherLive("127.0.0.1", 2183);
         checkServerWhetherLive("127.0.0.1", 2185);
         checkServerWhetherLive("127.0.0.1", 2186);
-        checkServerWhetherLive("127.0.0.1", 2187);
+        //checkServerWhetherLive("127.0.0.1", 2187);
+        checkServerWhetherLive("127.0.0.1", 2188);
     }
 
     /**

@@ -9,10 +9,8 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.util.zip.ZipOutputStream;
 
 public class FileUtil {
 
@@ -116,7 +114,7 @@ public class FileUtil {
      */
     @SuppressWarnings("unused")
     private static String readFileContent() {
-        final String methodName = "getDeviceDetailFromLocal";
+        final String methodName = "readFileContent";
         final StringBuffer buffer = new StringBuffer();
         try {
             final FileInputStream inputStream = new FileInputStream("config/server.xml");
