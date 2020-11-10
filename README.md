@@ -7,4 +7,4 @@ zkh's java summary project
   https://www.p2hp.com/screenrecord.html
  
 ### Link Demo
-  [baidu]: http://www.baidu.com
+  baidu [baidu]: http://www.baidu.com
